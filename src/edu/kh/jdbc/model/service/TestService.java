@@ -73,6 +73,8 @@ public class TestService {
 			if(result1 + result2 + result3 == 3) {
 				commit(conn); result=1; // 모두 insert 성공 시에 commit
 			} else rollback(conn);
+			
+			
 		}catch(SQLException e) { // dao 수행 중에 발생했을 때
 			rollback(conn);
 			
@@ -89,6 +91,24 @@ public class TestService {
 		return result; // insert를 3회한 결과 반환
 	}
 	
-	
+	/** 번호가 일치하는 행 제목, 내용 수정 서비스
+	 * @param vo1
+	 * @return result
+	 * @throws SQLException
+	 */
+	public int update(TestVO vo) throws Exception {
+		
+		Connection conn = getConnection();
+		
+		int result = dao.update(conn, vo);
+		
+		if (result>0) commit(conn);
+		else rollback(conn);
+		
+		
+		close(conn);
+		
+		return result;
+	}
 
 }

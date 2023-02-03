@@ -66,4 +66,29 @@ public class TestDAO {
 		return result;
 	}
 
+
+	/**
+	 * @param conn
+	 * @param vo
+	 * @return result
+	 */
+	public int update(Connection conn, TestVO vo) throws SQLException {
+		
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("update");
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, vo.getTestTitle());
+			pstmt.setString(2, vo.getTestContent());
+			pstmt.setInt(3, vo.getTestNo());
+			
+			result = pstmt.executeUpdate();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
 }

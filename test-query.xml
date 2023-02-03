@@ -6,5 +6,9 @@
 	<!-- TB_TEST 테이블 INSERT SQL -->
 	<entry key="insert">
 		INSERT INTO TB_TEST VALUES(?, ?, ?)
-		</entry>
+	</entry>
+	<!-- TB_TEST 테이블 UPDATE SQL -->
+	<entry key="update">
+		UPDATE TB_TEST SET TEST_TITLE = ?, TEST_CONTENT = ? WHERE TEST_NO = ?
+	</entry>
 </properties>
